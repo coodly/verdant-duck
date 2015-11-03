@@ -18,6 +18,7 @@ import UIKit
 
 class FontDemoCell: UITableViewCell {
     private var style: String!
+    private var availableOn: String!
     @IBOutlet private var demoLabel: UILabel!
     
     deinit {
@@ -32,9 +33,14 @@ class FontDemoCell: UITableViewCell {
     }
     
     func setShowFont(style: String, availableOn: String) {
-        demoLabel!.text = "\(availableOn) - \(style)"
         self.style = style
+        self.availableOn = availableOn
         updateFont()
+        updateText()
+    }
+    
+    private func updateText() {
+        demoLabel!.text = "\(availableOn) - \(style) - \(demoLabel.font.pointSize)"
     }
     
     private func updateFont() {
